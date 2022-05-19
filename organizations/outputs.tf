@@ -1,8 +1,8 @@
 output "env" {
   value = {
-    tools = {
-      id       = aws_organizations_account.tools.id
-      role_arn = "arn:aws:iam::${aws_organizations_account.tools.id}:role/Ops"
+    infra = {
+      id       = aws_organizations_account.infra.id
+      role_arn = "arn:aws:iam::${aws_organizations_account.infra.id}:role/Ops"
     }
 
     dev = {

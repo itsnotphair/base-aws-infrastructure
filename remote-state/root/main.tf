@@ -1,20 +1,20 @@
 terraform {
-  required_version = "~> 0.12.0"
+  #required_version = "~> 0.12.0"
   backend "local" {}
 }
 
 provider "aws" {
   profile = var.profile
   region  = var.region
-  version = "~> 2.0"
+  #version = "~> 2.0"
 }
 
 provider "local" {
-  version = "~> 1.4"
+  #version = "~> 1.4"
 }
 
 provider "template" {
-  version = "~> 2.1"
+  #version = "~> 2.1"
 }
 
 data "aws_caller_identity" "current" {}

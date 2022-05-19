@@ -1,28 +1,28 @@
 terraform {
-  required_version = "~> 0.12.0"
+  #required_version = "~> 0.12.0"
   backend "s3" {}
 }
 
 provider "aws" {
   profile = var.profile
   region  = var.region
-  version = "~> 2.0"
+  #version = "~> 2.0"
 }
 
 data "aws_caller_identity" "current" {}
 
 provider "aws" {
-  alias   = "tools"
-  profile = "${var.profile}-tools"
+  alias   = "infra"
+  profile = "${var.profile}-infra"
   region  = var.region
-  version = "~> 2.0"
+  #version = "~> 2.0"
 }
 
-module "tools" {
+module "infra" {
   source = "./env"
 
   providers = {
-    aws = aws.tools
+    aws = aws.infra
   }
 
   root_account_id = data.aws_caller_identity.current.account_id
@@ -32,7 +32,7 @@ provider "aws" {
   alias   = "dev"
   profile = "${var.profile}-dev"
   region  = var.region
-  version = "~> 2.0"
+  #version = "~> 2.0"
 }
 
 module "dev" {
@@ -49,7 +49,7 @@ provider "aws" {
   alias   = "stage"
   profile = "${var.profile}-stage"
   region  = var.region
-  version = "~> 2.0"
+  #version = "~> 2.0"
 }
 
 module "stage" {
@@ -66,7 +66,7 @@ provider "aws" {
   alias   = "prod"
   profile = "${var.profile}-prod"
   region  = var.region
-  version = "~> 2.0"
+  #version = "~> 2.0"
 }
 
 module "prod" {

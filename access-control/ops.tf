@@ -8,24 +8,24 @@ resource "aws_iam_group_policy_attachment" "administrator" {
 }
 
 #
-# tools
+# infra
 #
 
-data "aws_iam_policy_document" "assume_tools_ops" {
+data "aws_iam_policy_document" "assume_infra_ops" {
   statement {
     actions   = ["sts:AssumeRole"]
-    resources = ["arn:aws:iam::${module.tools.account_id}:role/Ops"]
+    resources = ["arn:aws:iam::${module.infra.account_id}:role/Ops"]
   }
 }
 
-resource "aws_iam_policy" "assume_tools_ops" {
-  name   = "assume-tools-ops"
-  policy = data.aws_iam_policy_document.assume_tools_ops.json
+resource "aws_iam_policy" "assume_infra_ops" {
+  name   = "assume-infra-ops"
+  policy = data.aws_iam_policy_document.assume_infra_ops.json
 }
 
-resource "aws_iam_group_policy_attachment" "assume_tools_ops" {
+resource "aws_iam_group_policy_attachment" "assume_infra_ops" {
   group      = aws_iam_group.ops.name
-  policy_arn = aws_iam_policy.assume_tools_ops.arn
+  policy_arn = aws_iam_policy.assume_infra_ops.arn
 }
 
 #

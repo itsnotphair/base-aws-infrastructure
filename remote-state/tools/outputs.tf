@@ -1,9 +1,9 @@
 output "backend" {
   value = {
-    tools = {
-      bucket         = module.tools.bucket
-      dynamodb_table = module.tools.dynamodb_table
-      kms_key_id     = module.tools.kms_key_id
+    infra = {
+      bucket         = module.infra.bucket
+      dynamodb_table = module.infra.dynamodb_table
+      kms_key_id     = module.infra.kms_key_id
       region         = var.region
     }
 

@@ -26,7 +26,7 @@ terraform import \
 terraform import \
     -var "profile=${root_profile}" \
     -var "service_name=${service_name}" \
-    module.tools.aws_iam_role.ops Ops
+    module.infra.aws_iam_role.ops Ops
 
 terraform import \
     -var "profile=${root_profile}" \

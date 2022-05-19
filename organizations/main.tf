@@ -1,16 +1,16 @@
 terraform {
-  required_version = "~> 0.12.0"
+  #required_version = "~> 0.12.0"
   backend "s3" {}
 }
 
 provider "aws" {
   profile = var.profile
   region  = var.region
-  version = "~> 2.0"
+  #version = "~> 2.0"
 }
 
 provider "local" {
-  version = "~> 1.4"
+  #version = "~> 1.4"
 }
 
 locals {
@@ -19,9 +19,9 @@ locals {
   email_domain = element(local.split_email, 1)
 }
 
-resource "aws_organizations_account" "tools" {
-  email     = "${local.email_user}+tools@${local.email_domain}"
-  name      = "tools"
+resource "aws_organizations_account" "infra" {
+  email     = "${local.email_user}+infra@${local.email_domain}"
+  name      = "infra"
   role_name = "Ops"
 
   lifecycle {
@@ -66,9 +66,9 @@ resource "local_file" "terraform_tfvars" {
 
 resource "local_file" "aws_config" {
   content = <<EOF
-[profile ${var.profile}-tools]
+[profile ${var.profile}-infra]
 source_profile = ${var.profile}
-role_arn = arn:aws:iam::${aws_organizations_account.tools.id}:role/Ops
+role_arn = arn:aws:iam::${aws_organizations_account.infra.id}:role/Ops
 
 [profile ${var.profile}-dev]
 source_profile = ${var.profile}
