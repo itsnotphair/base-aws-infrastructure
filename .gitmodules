@@ -7,3 +7,6 @@
 [submodule "access-control/.fenna/backends"]
 	path = access-control/.fenna/backends
 	url = git@github.com:itsnotphair/aws-backends.git
+[submodule "remote-state/infra/.fenna/backends"]
+	path = remote-state/infra/.fenna/backends
+	url = git@github.com:itsnotphair/aws-backends.git
