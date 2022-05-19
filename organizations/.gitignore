@@ -1,1 +1,4 @@
 aws_config.ini
+*.tfstate*
+.terraform
+plan

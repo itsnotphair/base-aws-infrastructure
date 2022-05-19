@@ -1,0 +1,6 @@
+[submodule "remote-state/root/.fenna/backends"]
+	path = remote-state/root/.fenna/backends
+	url = git@github.com:itsnotphair/aws-backends.git
+[submodule "organizations/.fenna/backends"]
+	path = organizations/.fenna/backends
+	url = git@github.com:itsnotphair/aws-backends.git
